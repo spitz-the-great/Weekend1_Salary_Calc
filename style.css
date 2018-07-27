@@ -1,0 +1,15 @@
+.employeeGrid{
+    display: grid;
+}
+
+th{
+    text-align: left;
+}
+
+table, th, tr{
+    border: 2px;
+}
+
+#totalLine{
+    text-align: right;
+}
