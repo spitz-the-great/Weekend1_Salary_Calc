@@ -13,6 +13,7 @@ function readyNow() {
 employees = [];
 let monthlyTotal = 0;
 let arrayIndex = 0;
+let salaryToRemove = 0;
 // end global vars
 
 
@@ -32,9 +33,22 @@ function removeEmp() {
     idTag = $(this).attr('id');
     $(this).closest('tr').empty();
     $(this).closest('tr').remove();
+    salaryById(idTag, employees);
     removeById(idTag, employees);
     console.log(idTag);
+    
     return true;
+}
+
+function salaryById(ID, array){
+    for( i = 0; i < array.length; i++){
+        if( array[i].ID == ID){
+            salaryToRemove = array[i].empSalary;
+        }
+    }
+
+    monthlyTotal -= salaryToRemove;
+    $('#totalLine').html('<div id="totalLine">Monthly Total: $' + monthlyTotal + '</div>');
 }
 
 
@@ -44,8 +58,8 @@ function removeById(ID, array){
         if( array[i].ID == ID){
             array.splice(i,1);
         }
-    }
-}
+    } // takes the employee.ID, finds the index of the object in the array and removes the object
+} // end removeById
 
 function dupSearch(ID, array) {
     for (i = 0; i < array.length; i++) {
