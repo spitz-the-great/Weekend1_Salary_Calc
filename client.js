@@ -6,6 +6,7 @@ function readyNow() {
     console.log('jq')
     $('.submitButton').on('click', addEmp);
     $('#totalLine').html('<div id="totalLine">Monthly Total: $0 </div>')
+    $('#tableActual').on('click', '.deleteButton',  removeEmp);
 } // end readyNow
 
 employees = [];
@@ -21,6 +22,12 @@ class Employee {
 } // end Employee
 
 let monthlyTotal = 0;
+
+function removeEmp(){
+    console.log('in removeEmp');
+    $(this).closest('tr').remove();  
+    return true;
+}
 
 function addEmp() {
     let fName = $('#firstNameInput').val();
